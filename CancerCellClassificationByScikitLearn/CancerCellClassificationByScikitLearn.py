@@ -10,9 +10,16 @@ features = data['data']
 
 from sklearn.model_selection import train_test_split
 
-train, test, train_labels, test_labes = \
+train, test, train_labels, test_labels = \
 train_test_split(features, labels, test_size=0.33, random_state=42)
 
 from sklearn.naive_bayes import GaussianNB
 gnb = GaussianNB()
 model = gnb.fit(train, train_labels)
+
+predictions = gnb.predict(test)
+print(predictions)
+
+from sklearn.metrics import accuracy_score
+print(accuracy_score(test_labels, predictions))
+
